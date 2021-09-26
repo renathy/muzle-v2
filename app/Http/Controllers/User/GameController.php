@@ -16,9 +16,22 @@ class GameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    // public function index()
+    // {
+    //     $games = Game::all();
+    //     return Inertia::render('User/Game/Index', [
+    //         'games' => $games,
+    //     ]);
+    // }
+
+    /**
+     * Display active games.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getActive()
     {
-        $games = Game::all();
+        $games = Game::where('is_archivated', 1)->get();
         return Inertia::render('User/Game/Index', [
             'games' => $games,
         ]);
