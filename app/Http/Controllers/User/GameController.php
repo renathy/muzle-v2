@@ -29,7 +29,7 @@ class GameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getActive()
+    // public function getActive()
     // {
     //     $games = Game::where('is_archivated', 1)->get();
     //     return Inertia::render('User/Game/Index', [
