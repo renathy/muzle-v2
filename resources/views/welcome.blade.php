@@ -8,6 +8,17 @@
                 Welcome, {{auth()->user()->name}}
             </h1>
         @endauth
+
+        Game list goes here
+
+        <table class="table-auto">
+            <tr>
+                <td>
+                    Test
+</td>
+</tr>
+        </table>
+        
     </div>
 </div>
 @stop
