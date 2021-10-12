@@ -25,7 +25,7 @@ const Helper = () => {
     <div className="flex justify-center">
       <div
         onMouseDown={onMouseDown}
-        className="w-12 h-12 flex items-center justify-center border border-transparent hover:border-gray-500 active:border-gray-300 cursor-pointer rounded-full"
+        className="w-12 h-12 flex items-center justify-center border border-transparent text-gray-900 hover:border-gray-600 active:border-gray-900 cursor-pointer rounded-full"
       >
         <FaQuestion />
       </div>

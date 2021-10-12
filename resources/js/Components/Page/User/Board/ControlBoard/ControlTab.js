@@ -1,6 +1,8 @@
 import React from "react";
 import { AiOutlineDownload } from "react-icons/ai";
 import { FaTrash } from "react-icons/fa";
+import { HiMinusCircle } from "react-icons/hi";
+
 import { Context } from "../ContextProvider";
 
 const buttonClass =
@@ -12,6 +14,12 @@ const ControlTab = () => {
 
   const handleDelete = () => {
     const objects = canvas.getActiveObjects();
+    canvas.remove(...objects);
+    canvas.renderAll();
+  };
+
+  const handleDeleteAll = () => {
+    const objects = canvas.getObjects();
     canvas.remove(...objects);
     canvas.renderAll();
   };
@@ -38,10 +46,13 @@ const ControlTab = () => {
 
   return (
     <div className="flex flex-wrap">
-      <button type="button" onClick={handleDownload} className={buttonClass}>
+      <button type="button" onClick={handleDownload} className={buttonClass} title="test">
         <AiOutlineDownload />
       </button>
       <button type="button" onClick={handleDelete} className={buttonClass}>
+        <HiMinusCircle />
+      </button>
+      <button type="button" onClick={handleDeleteAll} className={buttonClass}>
         <FaTrash />
       </button>
     </div>

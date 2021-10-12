@@ -10,8 +10,8 @@ const ContextProvider = ({ children }) => {
     background: null,
     gameId: null,
     dragItem: {},
-    width: 1015,
-    height: 730,
+    width: 1222,
+    height: 700,
     data: null,
     showHelper: false
   });

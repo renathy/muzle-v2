@@ -189,6 +189,12 @@ const Index = () => {
               <input className="mt-1 p-2 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" type="file" name="helper" />
             </label>
 
+            {/* Front end image thumb */}
+            <label className="bock text-sm">
+              <span>Front end image thumb</span>
+              <input className="mt-1 p-2 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" type="file" name="frontend_img_thumb" />
+            </label>
+
             {/* submit */}
             <Button variant="contained" color="default" fullWidth onClick={submit}>
               Submit

@@ -46,17 +46,17 @@ const BackgroundList = () => {
     <div>
       <div className="flex justify-between items-center mb-2">        
         <div>
-          {point > 0 && (
+          
             <button
-              className="p-2 rounded-full hover:bg-gray-700 active:opacity-80 focus:outline-none"
+              className="p-2 rounded-full bg-gray-900 hover:bg-gray-600 active:opacity-80 focus:outline-none"
               onClick={prev}
             >
               <IoIosArrowBack />
             </button>
-          )}
+          
           {point < range && (
             <button
-              className="p-2 rounded-full hover:bg-gray-700 active:opacity-80 focus:outline-none"
+              className="p-2 rounded-full  bg-gray-900 hover:bg-gray-900 active:opacity-80 focus:outline-none"
               onClick={next}
             >
               <IoIosArrowForward />
@@ -65,8 +65,8 @@ const BackgroundList = () => {
         </div>
       </div>
       <div className="flex">
-        {[0, 1].map((index) => (
-          <div className="w-1/2 cursor-pointer" key={index}>
+        {[0, 1, 2].map((index) => (
+          <div className="w-1/3 cursor-pointer" key={index}>
             {backgrounds[point + index] && background && (
               <div
                 onClick={() =>
@@ -75,12 +75,12 @@ const BackgroundList = () => {
                 className={
                   background.id === backgrounds[point + index].id
                     ? "p-1 border border-gray-300"
-                    : "p-1 border border-transparent hover:border-gray-500 active:border-gray-400"
+                    : "p-1 border border-transparent bg-gray-900 hover:border-gray-500 active:border-gray-400"
                 }
               >
                 <div className="relative" style={styles.image}>
                   <img
-                    src={`/storage/${backgrounds[point + index].src}`}
+                    src={`/storage/${backgrounds[point + index].src_thumb}`}
                     alt=""
                     className="rounded-sm overflow-hidden absolute w-full h-full object-cover top-0 left-0"
                   />

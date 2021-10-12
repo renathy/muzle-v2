@@ -43,10 +43,10 @@ const ShapeTab = () => {
       <div
         className={objectWrapper}
         draggable
-        onDragStart={(e) => dragStart(e, "line", "#059669")}
+        onDragStart={(e) => dragStart(e, "line", "#00E7FF")}
         onDragEnd={dragEnd}
       >
-        <div className="w-14 h-1 bg-green-600"></div>
+        <div className="w-14 h-2 bg-cyan-400"></div>
       </div>
       <div
         className={objectWrapper}
@@ -54,15 +54,15 @@ const ShapeTab = () => {
         onDragStart={(e) => dragStart(e, "line", "#DC2626")}
         onDragEnd={dragEnd}
       >
-        <div className="w-14 h-1 bg-red-600"></div>
+        <div className="w-14 h-2 bg-red-600"></div>
       </div>
       <div
         className={objectWrapper}
         draggable
-        onDragStart={(e) => dragStart(e, "circle", "#059669")}
+        onDragStart={(e) => dragStart(e, "circle", "#22D3EE")}
         onDragEnd={dragEnd}
       >
-        <div className="w-2 h-2 rounded-full bg-green-600"></div>
+        <div className="w-2 h-2 rounded-full bg-cyan-400"></div>
       </div>
       <div
         className={objectWrapper}

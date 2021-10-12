@@ -5,8 +5,8 @@ import CanvasBoard from "./CanvasBoard";
 import ControlBoard from "./ControlBoard";
 
 const styles = {
-  board: { width: 774, height: 730 },
-  control: { width: 250, height: 730 },
+  board: { width: 972, height: 700 },
+  control: { width: 250, height: 700 },
 };
 
 const renderThumb = ({ style, ...props }) => {
@@ -41,7 +41,7 @@ const Board = ({ data }) => {
         </div>
       
       <Scrollbars
-        className="flex-shrink-0 bg-gray-900 text-gray-100"
+        className="flex-shrink-0 bg-yellow-100 text-gray-100"
         style={styles.control}
         renderThumbHorizontal={renderThumb}
         renderThumbVertical={renderThumb}

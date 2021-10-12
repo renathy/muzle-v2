@@ -57,6 +57,7 @@ class GameController extends Controller
             'categories' => 'required|array',
             'categories.*' => 'exists:categories,id',
             'helper' => 'image:png,jpg',
+            'frontend_img_thumb' => 'image:png,jpg',
         ]);
 
         if ($validator->fails()) {
@@ -74,6 +75,13 @@ class GameController extends Controller
             $game->helper = $path;
         } else {
             $game->helper = '';
+        }
+
+        if (!is_null($request->frontend_img_thumb)) {
+            $path = $request->frontend_img_thumb->store('frontend_img_thumb');
+            $game->frontend_img_thumb = $path;
+        } else {
+            $game->frontend_img_thumb = '';
         }
 
         $game->save();

@@ -34,6 +34,7 @@ class GameController extends Controller
     {
         $game = Game::find($id);
         $backgrounds = $game->backgrounds()->get();
+        $backgrounds = $backgrounds->sortBy('is_default');
         $categories = $game->categories()->with('images')->get();
         return response()->json([
             'game' => $game,

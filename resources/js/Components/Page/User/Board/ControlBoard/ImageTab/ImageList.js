@@ -52,9 +52,6 @@ const ImageList = () => {
   return (
     <div>
       <div className="flex items-center justify-between">
-        <span className="text-sm">
-          {categories.length}
-        </span>
         <button
           onClick={showCategories}
           className="p-2 rounded-full hover:bg-gray-700 active:opacity-80 focus:outline-none"

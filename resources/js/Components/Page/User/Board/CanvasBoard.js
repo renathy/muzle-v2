@@ -28,14 +28,16 @@ const CanvasBoard = () => {
 
   React.useEffect(() => {
     if (canvas && background) {
-      canvas.setWidth(width);
+      let canvasWidth = width-250;
+
+      canvas.setWidth(canvasWidth);
       canvas.setHeight(height);
       const backgroundImageUrl = `/storage/${background.src}`;
       fabric.Image.fromURL(
         backgroundImageUrl,
         (img) => {
           if (img.width && img.height) {
-            const xR = width / img.width;
+            const xR = canvasWidth / img.width;
             const yR = height / img.height;
             const mR = Math.max(xR, yR);
             canvas.setBackgroundImage(

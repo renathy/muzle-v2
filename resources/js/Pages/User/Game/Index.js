@@ -12,7 +12,7 @@ const Index = () => {
   const [data, setData] = React.useState(null);
 
   const handleGameSelect = event => {
-    axios.get(`/games/getActive/${event.target.value}`).then(function (response) {
+    axios.get(`/games/${event.target.value}`).then(function (response) {
       const { game, backgrounds, categories } = response.data;
       setData({ game, backgrounds, categories });
     });
@@ -35,7 +35,7 @@ const Index = () => {
                   />
                 </div>
                 :
-                <div>No Game Exist</div>
+                <div>No Games Exist</div>
               }
               {data &&
                 <div>
