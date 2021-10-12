@@ -58,6 +58,7 @@ class BackgroundController extends Controller
         $background = new Background;
         $background->name = $request->name;
         $background->src = $path;
+        $background->src_thumb = $path;
         $background->save();
 
         return response()->json([
