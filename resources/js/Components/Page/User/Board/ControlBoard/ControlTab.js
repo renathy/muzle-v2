@@ -46,13 +46,13 @@ const ControlTab = () => {
 
   return (
     <div className="flex flex-wrap">
-      <button type="button" onClick={handleDownload} className={buttonClass} title="test">
+      <button type="button" onClick={handleDownload} className={buttonClass} title="Lejuplādēt">
         <AiOutlineDownload />
       </button>
-      <button type="button" onClick={handleDelete} className={buttonClass}>
+      <button type="button" onClick={handleDelete} className={buttonClass} title="Dzēst vienu objektu">
         <HiMinusCircle />
       </button>
-      <button type="button" onClick={handleDeleteAll} className={buttonClass}>
+      <button type="button" onClick={handleDeleteAll} className={buttonClass} title="Dzēst visu">
         <FaTrash />
       </button>
     </div>

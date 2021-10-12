@@ -20,14 +20,14 @@ const TextTab = () => {
     <div className="space-y-4">
       <div>
         <button className={buttonClass} onClick={handleTextAdd}>
-          Add Text
+          Pievienot tekstu
         </button>
       </div>
       <div className="space-y-2">
-        <p>Comment</p>
+        <p>Pievieno aprakstu</p>
         <textarea
           rows={15}
-          placeholder="Leave Comment"
+          placeholder="Apraksts"
           className="text-gray-900 p-2 w-full resize-y rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"
         >
         </textarea>

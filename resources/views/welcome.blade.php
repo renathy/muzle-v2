@@ -8,7 +8,7 @@
                 <div class="text-6xl text-green-900 font-bold">
                     Lielā dabas spēle Mežs
                 </div>
-                <img class="w-1/2" alt="Lielā dabas spēle mežs" src="img/dabas-spele.jpg">
+                <img class="w-1/2" alt="Lielā dabas spēle Mežs" src="img/dabas-spele.jpg">
                 <div>
                     Šeit būs īss visu spēļu apraksts
                 </div>
