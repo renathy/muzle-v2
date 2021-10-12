@@ -22,6 +22,8 @@ class GameController extends Controller
     public function index()
     {
         $games = Game::withCount('backgrounds')->withCount('categories')->get();
+        $games = $games->sortBy('name');
+        
         $categories = Category::all();
         $backgrounds = Background::all();
         return Inertia::render('Admin/Game/Index', [

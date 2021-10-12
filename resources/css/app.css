@@ -42,3 +42,9 @@ video {
     max-width: 100%;
     height: auto;
 }
+
+.game-card-images {
+  height: 150px;
+  -o-object-fit: fill!important;
+     object-fit: fill!important;
+}

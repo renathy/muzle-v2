@@ -23,6 +23,16 @@ class GameController extends Controller
             'games' => $games,
         ]);
     }
+
+    // public function frontend_index()
+    // {
+    //     $games = Game::where('is_archivated', 0)->get();
+    //     return Inertia::render('User/Game/Index', [
+    //         'games' => $games,
+    //     ]);
+    // }
+
+
  
     /**
      * Display the specified resource.

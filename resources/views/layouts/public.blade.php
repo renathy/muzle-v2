@@ -30,6 +30,10 @@
               Digitālās spēles
             </a>
             
+            <a href='/apraksts' class="h-full px-2 flex items-center hover:bg-yellow-800 active:bg-yellow-800">
+              Spēļu apraksti
+            </a>
+
             <a
               href='http://www.muzle.lv'
               class="h-full px-2 flex items-center hover:bg-yellow-800 active:bg-yellow-800"
@@ -43,6 +47,7 @@
           >
             Kontakti
           </a>
+          
         </div>
         <div class="flex-grow"></div>
         @auth
