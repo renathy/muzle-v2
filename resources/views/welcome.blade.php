@@ -12,20 +12,27 @@
                 <div>
                     Šeit būs īss visu spēļu apraksts
                 </div>
-            </div> 
+            </div>
             @foreach($games as $game) 
-                <div class="max-w-sm rounded overflow-hidden shadow-lg py-2 card-game mx-1 my-2">
-                    <div class="font-bold text-xl mb-2 card-header text-center">{{$game->name}}</div>
-                    <img class="w-full" src="/storage/{{$game->frontend_img_thumb}}" alt="{{$game->name}}" >
-                    <div class="text-center">{{$game->description}}</div>
-                    <div class="px-6 pt-4 pb-2 game-card-button">                    
-                        <button class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded ">
-                            <a href="/games/{{$game->id}}" title="Doties uz spēli">Spēlēt</a>
-                        </button>
+                <div class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
+                    <div class="relative pb-48 overflow-hidden">
+                        <img class="absolute inset-0 w-full object-cover" src="/storage/{{$game->frontend_img_thumb}}" alt="">
                     </div>
-                    <a class="underline" href="#static">Uz aprakstu</a>
-                </div>  
-            @endforeach
+                    <div class="px-4 py-2">
+                        <h2 class="mt-2 mb-2  font-bold">{{$game->name}}</h2>
+                        <p class="text-sm">{{$game->description}}</p>
+                    </div>
+                <div class="px-4 py-4 border-t border-b text-xs text-gray-700">
+                    <span class="flex items-center">
+                        <a href="/games" class="inline-block bg-green-700 text-white font-bold rounded py-2 px-4">
+                            Spēlēt
+                        </a>
+                    </span>
+                </div>
+                <div class="p-4 flex items-center text-sm text-gray-600">
+                    <span class="ml-2"><a>Lasīt vairāk</a></span></div>
+                </div>
+            @endforeach           
         </div>
     </div>
 </div>

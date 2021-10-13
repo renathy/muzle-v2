@@ -46,15 +46,16 @@ const BackgroundList = () => {
     <div>
       <div className="flex justify-between items-center mb-2">        
         <div>
-          
+          {backgrounds.length > 3 && (
             <button
               className="p-2 rounded-full bg-gray-900 hover:bg-gray-600 active:opacity-80 focus:outline-none"
               onClick={prev}
             >
               <IoIosArrowBack />
             </button>
-          
-          {point < range && (
+          )}
+
+          {backgrounds.length > 3 && (
             <button
               className="p-2 rounded-full  bg-gray-900 hover:bg-gray-900 active:opacity-80 focus:outline-none"
               onClick={next}
@@ -74,14 +75,15 @@ const BackgroundList = () => {
                 }
                 className={
                   background.id === backgrounds[point + index].id
-                    ? "p-1 border border-gray-300"
-                    : "p-1 border border-transparent bg-gray-900 hover:border-gray-500 active:border-gray-400"
+                    ? "p-1 border border-gray-300 bg-gray-200"
+                    : "p-1 border border-transparent hover:border-gray-500"
                 }
               >
                 <div className="relative" style={styles.image}>
                   <img
                     src={`/storage/${backgrounds[point + index].src_thumb}`}
-                    alt=""
+                    alt={backgrounds[point + index].name}
+                    title={backgrounds[point + index].name}
                     className="rounded-sm overflow-hidden absolute w-full h-full object-cover top-0 left-0"
                   />
                 </div>

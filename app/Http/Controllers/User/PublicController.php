@@ -12,5 +12,9 @@ class PublicController extends Controller {
         $games = Game::where('is_archivated', 0)->orderBy('name')->get();
         return view('welcome')->with('games', $games);
     }
+
+    public function apraksts(){
+    	return view('apraksts');
+    }
 }
 ?>

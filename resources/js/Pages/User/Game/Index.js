@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import UserLayout from '@/Components/UserLayout';
 import FormSelectNative from "@/Components/Form/FormSelectNative";
 import Board from "@/Components/Page/User/Board";
@@ -11,11 +11,19 @@ const Index = () => {
   const { games } = usePage().props;
   const [data, setData] = React.useState(null);
 
-  const handleGameSelect = event => {
-    axios.get(`/games/${event.target.value}`).then(function (response) {
+  const getGameData = (id) =>{
+    axios.get(`/games/${id}`).then(function (response) {
       const { game, backgrounds, categories } = response.data;
       setData({ game, backgrounds, categories });
     });
+  }
+  useEffect(()=>{
+    if(games.length>0){
+      getGameData(games[0].id)
+    }
+  },[])
+  const handleGameSelect = event => {
+    getGameData(event.target.value);
   };
 
   return (

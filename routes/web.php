@@ -20,8 +20,8 @@ use Inertia\Inertia;
 // });
 
 //Route::get('/', 'PublicPageController@index');
-
-Route::get('public', 'User\PublicController@index');
+Route::get('/', 'User\PublicController@index');
+Route::get('/apraksts', 'User\PublicController@apraksts');
 
 require __DIR__.'/auth.php';
 
