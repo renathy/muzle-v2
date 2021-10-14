@@ -42,7 +42,7 @@
             </a>
           
           <a
-            href='/'
+            href='https://muzle.lv/lv/kontakti/'
             class="h-full px-2 flex items-center hover:bg-yellow-800 active:bg-yellow-800"
           >
             Kontakti
