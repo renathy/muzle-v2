@@ -37,5 +37,6 @@ Route::middleware('auth')->group(function() {
     });
 
     Route::get('games', 'User\GameController@index');
-    Route::get('games/{id}', 'User\GameController@show');
+    Route::get('games/{id}', 'User\GameController@gameDisplay');
+    Route::post('games/{id}', 'User\GameController@show');
 });

@@ -14,6 +14,11 @@
 
     <!-- Scripts -->
     <script src="{{ mix('js/public.js') }}" defer></script>
+    <style type="text/css">
+      .game-list:hover div{
+        display: flex!important;
+      }
+    </style>
   </head>
   <body class="antialiased">
     <header class="z-10 h-16 bg-yellow-900 text-white shadow1 px-2 lg:px-0">
@@ -22,14 +27,27 @@
           <img class="h-8" src="/img/logo-white.png" alt="" />
         </a>
         <div class="pl-8 space-x-2 h-full flex">
-          
+            @if (count($games) > 0)
+            <div
+              class="cursor-pointer game-list relative h-full px-2 flex items-center hover:bg-yellow-800 active:bg-yellow-800"
+            >
+              Digitālās spēles
+              <div class="absolute bg-gray-500" style="left:0;top:64px;z-index:1000; width:250px;display:none">
+                <ul class="list-none w-full">
+                  @foreach($games as $game)
+                  <li class=" w-100 p-1 pl-4 pr-4 hover:bg-gray-700"><a class="p-2 block w-full" href="/games/{{$game->id}}">{{ $game->name }}</a></li>
+                  @endforeach
+                </ul>
+              </div>
+            </div>
+            @else
             <a
               href='/games'
-              class="h-full px-2 flex items-center hover:bg-yellow-800 active:bg-yellow-800"
+              class="cursor-pointer relative h-full px-2 flex items-center hover:bg-yellow-800 active:bg-yellow-800"
             >
               Digitālās spēles
             </a>
-            
+            @endif
             <a href='/apraksts' class="h-full px-2 flex items-center hover:bg-yellow-800 active:bg-yellow-800">
               Spēļu apraksti
             </a>

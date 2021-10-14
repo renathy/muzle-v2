@@ -9,17 +9,28 @@ import axios from "axios";
 const Index = () => {
 
   const { games } = usePage().props;
+  let { active_id } = usePage().props
+  if(active_id == -1){
+    active_id = games[0].id;
+  }
   const [data, setData] = React.useState(null);
+  console.log(games,">>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
   const getGameData = (id) =>{
-    axios.get(`/games/${id}`).then(function (response) {
+    axios.post(`/games/${id}`).then(function (response) {
       const { game, backgrounds, categories } = response.data;
       setData({ game, backgrounds, categories });
+      let url = "/games/"+id;
+      console.log(url);
+      history.pushState(null, null, url);
     });
   }
   useEffect(()=>{
     if(games.length>0){
-      getGameData(games[0].id)
+      if(active_id == -1){
+        active_id = games[0].id;
+      }
+      getGameData(active_id)
     }
   },[])
   const handleGameSelect = event => {
@@ -39,7 +50,7 @@ const Index = () => {
                     valueKey="id"
                     labelKey="name"
                     onChange={handleGameSelect}
-                    defaultValue={games[0].id}
+                    defaultValue={active_id}
                   />
                 </div>
                 :

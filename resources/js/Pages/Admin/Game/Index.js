@@ -7,10 +7,11 @@ import axios from "axios";
 const Index = () => {
   const props = usePage().props;
   const [data, setData] = React.useState({
-    games: [],
-    categories: [],
-    backgrounds: []
+    games: props.games,
+    categories: props.categories,
+    backgrounds:props.backgrounds
   });
+  console.log(data);
   const [status, setStatus] = React.useState({ code: null });
   const formRef = React.useRef(null);
   const [backgrounds, setBackgrounds] = React.useState([]);
@@ -86,7 +87,7 @@ const Index = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {data.games.map(game =>
+              {Object.values(data.games).map(game =>
                 <TableRow key={game.id}>
                   <TableCell>{game.name}</TableCell>
                   <TableCell>{game.description}</TableCell>

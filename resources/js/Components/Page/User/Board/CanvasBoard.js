@@ -4,9 +4,9 @@ import { Context } from "./ContextProvider";
 
 const CanvasBoard = () => {
   const { state, setState } = React.useContext(Context);
-  const { canvas, background, dragItem, width, height } = state;
-
+  const { canvas, background, dragItem, width, height , canvaText} = state;
   React.useEffect(() => {
+    console.log(canvaText,">>>>>>>>>>>>>>>>>>>>>");
     if (state.canvas === null) {
       const canvas = new fabric.Canvas("canvas", {
         width: 0,
@@ -29,9 +29,37 @@ const CanvasBoard = () => {
   React.useEffect(() => {
     if (canvas && background) {
       let canvasWidth = width-250;
-
+      canvas.backgroundColor="white";
       canvas.setWidth(canvasWidth);
       canvas.setHeight(height);
+      let texBoxItems = canvas.getObjects();
+      for(var i=0; i<texBoxItems.length; i++ ){
+
+        if(texBoxItems[i].get('type') == "textbox"){
+          if(texBoxItems[i].active == false){
+              canvas.setActiveObject(texBoxItems[i]);
+                canvas.remove(texBoxItems[i]);
+          }
+          else{
+                canvas.remove(texBoxItems[i]);
+          } 
+        } 
+      }
+      const caText = new fabric.Textbox(canvaText, {
+        left: state.width - 230,
+        top:20,
+        fontFamily: 'sanif',
+        fontSize:18,
+        fill:'black',
+        breakWords:true,
+        charSpacing:100
+      });
+      canvas.add(caText);
+      caText.width = 190;
+  
+      canvas.renderAll.bind(canvas);
+
+
       const backgroundImageUrl = `/storage/${background.src}`;
       fabric.Image.fromURL(
         backgroundImageUrl,
@@ -57,7 +85,7 @@ const CanvasBoard = () => {
         }
       );
     }
-  }, [canvas, width, height, background]);
+  }, [canvas, width, height, background, canvaText]);
 
   const handleDrop = (event) => {
     if (canvas && dragItem.type) {

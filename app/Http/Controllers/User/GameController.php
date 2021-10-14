@@ -20,7 +20,16 @@ class GameController extends Controller
     {
         $games = Game::where('is_archivated', 0)->get();
         return Inertia::render('User/Game/Index', [
-            'games' => $games,
+            'games' => $games,  
+            'active_id'=>-1,
+        ]);
+    }
+
+    public function gameDisplay($id){
+        $games = Game::where('is_archivated', 0)->get();
+        return Inertia::render('User/Game/Index', [
+            'games' => $games,  
+            'active_id'=>$id
         ]);
     }
 
