@@ -13,7 +13,9 @@ const ContextProvider = ({ children }) => {
     width: 1222,
     height: 700,
     data: null,
-    showHelper: false
+    showHelper: false,
+    canvaText:"Story text",
+    canvaColor:"white"
   });
 
   return (

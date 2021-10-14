@@ -20,8 +20,8 @@ use Inertia\Inertia;
 // });
 
 //Route::get('/', 'PublicPageController@index');
-
-Route::get('public', 'User\PublicController@index');
+Route::get('/', 'User\PublicController@index');
+Route::get('/apraksts', 'User\PublicController@apraksts');
 
 require __DIR__.'/auth.php';
 
@@ -37,5 +37,6 @@ Route::middleware('auth')->group(function() {
     });
 
     Route::get('games', 'User\GameController@index');
-    Route::get('games/{id}', 'User\GameController@show');
+    Route::get('games/{id}', 'User\GameController@gameDisplay');
+    Route::post('games/{id}', 'User\GameController@show');
 });

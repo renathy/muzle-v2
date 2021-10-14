@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import UserLayout from '@/Components/UserLayout';
 import FormSelectNative from "@/Components/Form/FormSelectNative";
 import Board from "@/Components/Page/User/Board";
@@ -9,13 +9,32 @@ import axios from "axios";
 const Index = () => {
 
   const { games } = usePage().props;
+  let { active_id } = usePage().props
+  if(active_id == -1){
+    active_id = games[0].id;
+  }
   const [data, setData] = React.useState(null);
+  console.log(games,">>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
-  const handleGameSelect = event => {
-    axios.get(`/games/${event.target.value}`).then(function (response) {
+  const getGameData = (id) =>{
+    axios.post(`/games/${id}`).then(function (response) {
       const { game, backgrounds, categories } = response.data;
       setData({ game, backgrounds, categories });
+      let url = "/games/"+id;
+      console.log(url);
+      history.pushState(null, null, url);
     });
+  }
+  useEffect(()=>{
+    if(games.length>0){
+      if(active_id == -1){
+        active_id = games[0].id;
+      }
+      getGameData(active_id)
+    }
+  },[])
+  const handleGameSelect = event => {
+    getGameData(event.target.value);
   };
 
   return (
@@ -31,7 +50,7 @@ const Index = () => {
                     valueKey="id"
                     labelKey="name"
                     onChange={handleGameSelect}
-                    defaultValue={games[0].id}
+                    defaultValue={active_id}
                   />
                 </div>
                 :
