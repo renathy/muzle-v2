@@ -3,4 +3,5 @@ export const Nav = {
   SHAPE: 'SHAPE',
   TEXT: 'TEXT',
   CONTROL: 'CONTROL',
+  SOUND: 'SOUND'
 }

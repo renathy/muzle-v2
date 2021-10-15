@@ -20,7 +20,7 @@ const navOptions = [
   {
     name: Nav.CONTROL,
     Icon: FaCogs,
-  }
+  }  
 ];
 
 const Navigation = () => {

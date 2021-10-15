@@ -6,6 +6,7 @@ import ImageTab from "./ImageTab";
 import ShapeTab from "./ShapeTab";
 import TextTab from "./TextTab";
 import ControlTab from "./ControlTab";
+import SoundControlTab from "./SoundControlTab";
 
 const Board = () => {
   const { state } = React.useContext(Context);
@@ -21,6 +22,7 @@ const Board = () => {
         {nav === Nav.SHAPE && <ShapeTab />}
         {nav === Nav.TEXT && <TextTab />}
         {nav === Nav.CONTROL && <ControlTab />}
+        {nav === Nav.SOUND && <SoundControlTab />}
       </div>
     </div>
   );

@@ -10,4 +10,5 @@ const Board = ({ data }) => {
   );
 };
 
+
 export default Board;

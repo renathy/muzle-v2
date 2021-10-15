@@ -46,15 +46,15 @@ const BackgroundList = () => {
     <div>
       <div className="flex justify-between items-center mb-2">        
         <div>
-          
+          {range > 3 && (
             <button
               className="p-2 rounded-full bg-gray-900 hover:bg-gray-600 active:opacity-80 focus:outline-none"
               onClick={prev}
             >
               <IoIosArrowBack />
             </button>
-          
-          {point < range && (
+          )}
+          {range > 3 && (
             <button
               className="p-2 rounded-full  bg-gray-900 hover:bg-gray-900 active:opacity-80 focus:outline-none"
               onClick={next}

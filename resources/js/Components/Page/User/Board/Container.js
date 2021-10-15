@@ -29,6 +29,19 @@ const Board = ({ data }) => {
     });
   }, [data]);
 
+  let sound = document.createElement("audio");
+  sound.src = '/storage/sound/sound.wav';
+  sound.setAttribute("preload", "auto");
+  sound.setAttribute("controls", "none");
+  sound.setAttribute("loop", true);
+  sound.loop = true;
+  sound.style.display = "none";
+  document.body.appendChild(sound);
+
+  document.addEventListener('click', function (event) {
+    sound.play();
+  }, false);
+
   // <Scrollbars
   //       className="flex-grow"
   //       renderThumbHorizontal={renderThumb}

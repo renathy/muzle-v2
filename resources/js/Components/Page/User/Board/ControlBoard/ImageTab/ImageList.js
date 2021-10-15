@@ -1,5 +1,5 @@
 import React from "react";
-import { BsList } from "react-icons/bs";
+import { BsArrowReturnLeft } from "react-icons/bs";
 import { Context } from "../../ContextProvider";
 
 const buttonClass = "w-1/3 h-16 p-2 flex items-center justify-center border border-transparent hover:border-gray-500 active:border-gray-300 cursor-pointer rounded-sm";
@@ -46,26 +46,31 @@ const ImageList = () => {
   //   });
   // };
 
+  //todo: shape and image tabs is copy paste put into one place instead
   const handleElementAdd = (event, image) => {
     console.log(image);
 
     const imageSize = event.target.childNodes[0].getBoundingClientRect();
     console.log(imageSize);
 
-     const imageUrl = `/storage/${image.src}`;
-    new fabric.Image.fromURL(imageUrl, img => {
-      //img.width = 100;
-      // img.height = imageSize.height;
-      //img.scale(1);
-      var scale = 1;      
-      if (img.width > 100) {
-        scale = 100/img.width;
-      }
-      var oImg = img.set({left:  state.width / 2 - img.width * scale, top:  state.height / 2 - img.height * scale, angle: 0}).scale(scale);
+    const imageUrl = `/storage/${image.src}`;
+      new fabric.Image.fromURL(imageUrl, img => {
+        //img.width = 100;
+        // img.height = imageSize.height;
+        //img.scale(1);
+        var scale = 1;      
+        if (img.width > 100) {
+          scale = 100/img.width;
+        }
+        var oImg = img.set({left:  state.width / 2 - img.width * scale, top:  state.height / 2 - img.height * scale, angle: 0}).scale(scale);
 
-      canvas.add(oImg).renderAll.bind(canvas);
-      canvas.setActiveObject(oImg);
-   });
+        oImg.on('mousedown', function(options) {
+          console.log('rect event');
+        });
+
+        canvas.add(oImg).renderAll.bind(canvas);
+        canvas.setActiveObject(oImg);
+      });
   };
 
   const showCategories = () => {
@@ -75,18 +80,20 @@ const ImageList = () => {
   return (
     <div>
       <div className="flex items-center justify-between">
+      {category && (
         <button
           onClick={showCategories}
-          className="p-2 rounded-full hover:bg-gray-700 active:opacity-80 focus:outline-none"
+          className="p-2 rounded-full bg-gray-900 hover:bg-gray-700 active:opacity-80 focus:outline-none"
         >
-          <BsList />
+          <BsArrowReturnLeft />
         </button>
+      )}
       </div>
 
       {category === null && (
         <div className="flex flex-wrap">
           {categories.map(cat => (
-            <div
+            <div             
               key={cat.name}
               onClick={() => setCategory(cat)}
               className={buttonClass}

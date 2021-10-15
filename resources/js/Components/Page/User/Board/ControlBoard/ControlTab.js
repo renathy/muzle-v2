@@ -6,7 +6,7 @@ import { HiMinusCircle } from "react-icons/hi";
 import { Context } from "../ContextProvider";
 
 const buttonClass =
-  "w-12 h-12 m-1 flex items-center justify-center text-xl focus:outline-none border border-gray-700 hover:border-gray-300 active:border-gray-500";
+  "rounded w-12 h-12 m-1 flex items-center justify-center text-xl focus:outline-none border border-gray-700 hover:border-gray-300 active:border-gray-500 bg-gray-600";
 
 const ControlTab = () => {
   const { state } = React.useContext(Context);

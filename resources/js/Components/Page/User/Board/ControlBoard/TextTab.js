@@ -20,6 +20,11 @@ const TextTab = () => {
   };
   const handleColor=(color)=>{
     setCanvaColor(color);
+    let activeObject = canvas.getActiveObject(); 
+    if(activeObject && activeObject.type == "i-text") {
+      canvas.getActiveObject().set({"fill": color});
+      canvas.renderAll();
+    }
     setState({
       ...state,canvaColor:color
     });

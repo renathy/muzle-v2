@@ -4,7 +4,7 @@ import { Context } from "./ContextProvider";
 
 const CanvasBoard = () => {
   const { state, setState } = React.useContext(Context);
-  const { canvas, background, dragItem, width, height , canvaText} = state;
+  const { canvas, background, dragItem, width, height , canvaText, soundOn} = state;
   React.useEffect(() => {
    
     if (state.canvas === null) {
