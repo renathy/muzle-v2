@@ -10,7 +10,7 @@ const TextTab = () => {
   const [canvaText, setCanvaText] = React.useState(state.canvaText);
   const [canvaColor, setCanvaColor] = React.useState(state.canvaColor);
   const handleTextAdd = () => {
-    console.log(canvaText);
+    
     const text = new fabric.IText('TEXT', {
       left: state.width / 2,
       top: state.height / 2,

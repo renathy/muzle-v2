@@ -6,6 +6,7 @@ const buttonClass = "w-1/3 h-16 p-2 flex items-center justify-center border bord
 
 const ImageList = () => {
   const { state, setState } = React.useContext(Context);
+  const { canvas } = state;
   const { data } = state;
   const [categories, setCategories] = React.useState([]);
   const [category, setCategory] = React.useState(null);
@@ -16,33 +17,55 @@ const ImageList = () => {
     }
   }, [data]);
 
-  const dragStart = (event, image) => {
-    const imageSize = event.target.childNodes[0].getBoundingClientRect();
-    setState({
-      ...state,
-      dragItem: {
-        type: "image",
-        object: image,
-        offsetX: event.clientX - imageSize.left,
-        offsetY: event.clientY - imageSize.top,
-        width: imageSize.width,
-        height: imageSize.height,
-      },
-    });
-  };
+  // const dragStart = (event, image) => {
+  //   const imageSize = event.target.childNodes[0].getBoundingClientRect();
+  //   setState({
+  //     ...state,
+  //     dragItem: {
+  //       type: "image",
+  //       object: image,
+  //       offsetX: event.clientX - imageSize.left,
+  //       offsetY: event.clientY - imageSize.top,
+  //       width: imageSize.width,
+  //       height: imageSize.height,
+  //     },
+  //   });
+  // };
 
-  const dragEnd = () => {
-    setState({
-      ...state,
-      dragItem: {
-        type: null,
-        object: null,
-        offsetX: 0,
-        offsetY: 0,
-        width: 0,
-        height: 0,
-      },
-    });
+  // const dragEnd = () => {
+  //   setState({
+  //     ...state,
+  //     dragItem: {
+  //       type: null,
+  //       object: null,
+  //       offsetX: 0,
+  //       offsetY: 0,
+  //       width: 0,
+  //       height: 0,
+  //     },
+  //   });
+  // };
+
+  const handleElementAdd = (event, image) => {
+    console.log(image);
+
+    const imageSize = event.target.childNodes[0].getBoundingClientRect();
+    console.log(imageSize);
+
+     const imageUrl = `/storage/${image.src}`;
+    new fabric.Image.fromURL(imageUrl, img => {
+      //img.width = 100;
+      // img.height = imageSize.height;
+      //img.scale(1);
+      var scale = 1;      
+      if (img.width > 100) {
+        scale = 100/img.width;
+      }
+      var oImg = img.set({left:  state.width / 2 - img.width * scale, top:  state.height / 2 - img.height * scale, angle: 0}).scale(scale);
+
+      canvas.add(oImg).renderAll.bind(canvas);
+      canvas.setActiveObject(oImg);
+   });
   };
 
   const showCategories = () => {
@@ -77,11 +100,11 @@ const ImageList = () => {
       {category && (
         <div className="flex flex-wrap">
           {category.images.map((img) => (
-            <div
-              draggable
+            <div              
               key={img.name}
-              onDragStart={(e) => dragStart(e, img)}
-              onDragEnd={dragEnd}
+              // onDragStart={(e) => dragStart(e, img)}
+              // onDragEnd={dragEnd}
+              onClick={(e) => handleElementAdd(e, img)}
               className={buttonClass}
             >
               <img

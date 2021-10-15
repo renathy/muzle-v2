@@ -6,7 +6,7 @@ const CanvasBoard = () => {
   const { state, setState } = React.useContext(Context);
   const { canvas, background, dragItem, width, height , canvaText} = state;
   React.useEffect(() => {
-    console.log(canvaText,">>>>>>>>>>>>>>>>>>>>>");
+   
     if (state.canvas === null) {
       const canvas = new fabric.Canvas("canvas", {
         width: 0,
