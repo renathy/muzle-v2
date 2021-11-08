@@ -14,14 +14,14 @@ const Index = () => {
     active_id = games[0].id;
   }
   const [data, setData] = React.useState(null);
-  console.log(games,">>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
 
   const getGameData = (id) =>{
     axios.post(`/games/${id}`).then(function (response) {
       const { game, backgrounds, categories } = response.data;
       setData({ game, backgrounds, categories });
       let url = "/games/"+id;
-      console.log(url);
+      
       history.pushState(null, null, url);
     });
   }

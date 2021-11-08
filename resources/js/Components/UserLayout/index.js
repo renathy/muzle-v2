@@ -25,10 +25,22 @@ const UserLayout = ({ children }) => {
             </a>
             <div className="pl-8 space-x-2 h-full flex">
               <a
+                href='/'
+                className="h-full px-2 flex items-center hover:bg-yellow-800 active:bg-yellow-800"
+              >
+                Sākums
+              </a>
+              <a
                 href='/games'
                 className="h-full px-2 flex items-center hover:bg-yellow-800 active:bg-yellow-800"
               >
                 Digitālās spēles
+              </a>
+              <a
+                href='/apraksts'
+                className="h-full px-2 flex items-center hover:bg-yellow-800 active:bg-yellow-800"
+              >
+                Apraksti
               </a>
               <a
                 href='/'

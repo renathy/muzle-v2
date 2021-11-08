@@ -6,7 +6,7 @@ const CanvasBoard = () => {
   const { state, setState } = React.useContext(Context);
   const { canvas, background, dragItem, width, height , canvaText} = state;
   React.useEffect(() => {
-    console.log(canvaText,">>>>>>>>>>>>>>>>>>>>>");
+    
     if (state.canvas === null) {
       const canvas = new fabric.Canvas("canvas", {
         width: 0,
@@ -23,7 +23,7 @@ const CanvasBoard = () => {
     if (state.canvas) {
       state.canvas.clear();
     }
-    console.log(state.gameId);
+    
   }, [state.gameId]);
 
   React.useEffect(() => {

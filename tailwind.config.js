@@ -18,6 +18,10 @@ module.exports = {
             },
             colors: {
                 cyan: colors.cyan
+            },
+            screens: {
+                'print': {'raw': 'print'},
+                // => @media print { ... }
             }
         },
     },

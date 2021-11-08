@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Muzle Spēles" content="Muzle Digitālās Spēles">
+    <meta http-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <meta http-EQUIV="EXPIRES" CONTENT="Wed, 27 Oct 2021 07:28:00 GMT">
     <title>Muzle Dabas Spēles</title>
 
     <!-- Fonts -->
@@ -21,13 +23,19 @@
     </style>
   </head>
   <body class="antialiased">
-    <header class="z-10 h-16 bg-yellow-900 text-white shadow1 px-2 lg:px-0">
+    <header class="z-10 h-16 bg-yellow-900 text-white shadow1 px-2 lg:px-0 print:hidden">
       <div class="container max-w-screen-xl mx-auto flex items-center h-full">
         <a class="h-full flex items-center" href="/">
           <img class="h-8" src="/img/logo-white.png" alt="" />
         </a>
         <div class="pl-8 space-x-2 h-full flex">
-            @if (count($games) > 0)
+            <a
+              href='/'
+              class="cursor-pointer relative h-full px-2 flex items-center hover:bg-yellow-800 active:bg-yellow-800"
+            >
+              Sākums
+            </a>
+            @if (!empty($games) && count($games) > 0)
             <div
               class="cursor-pointer game-list relative h-full px-2 flex items-center hover:bg-yellow-800 active:bg-yellow-800"
             >
@@ -68,6 +76,10 @@
           
         </div>
         <div class="flex-grow"></div>
+        <a href="https://muzle.lv/lv/kontakti/" target="_blank" class="h-full px-2 flex items-center hover:bg-yellow-800 active:bg-yellow-800">
+          info@muzle.lv
+        </a>
+
         @auth
           @if (auth()->user()->role == 'admin')
             <a href="{{ url('/management') }}" class="h-full px-2 flex items-center hover:bg-yellow-800 active:bg-yellow-800">

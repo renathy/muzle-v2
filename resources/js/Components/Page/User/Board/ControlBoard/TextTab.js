@@ -9,17 +9,29 @@ const TextTab = () => {
   const { canvas } = state;
   const [canvaText, setCanvaText] = React.useState(state.canvaText);
   const [canvaColor, setCanvaColor] = React.useState(state.canvaColor);
+
   const handleTextAdd = () => {
-    console.log(canvaText);
+    canvas.isDrawingMode = false;
+
     const text = new fabric.IText('TEXT', {
       left: state.width / 2,
       top: state.height / 2,
-      fill: canvaColor
+      fill: canvaColor,
+      borderColor: '#cc0000',
+      cornerColor: '#cc0000',
+      cornerStyle: 'circle'
     });
     canvas.add(text).renderAll.bind(canvas);
   };
   const handleColor=(color)=>{
+    canvas.isDrawingMode = false;
+
     setCanvaColor(color);
+    let activeObject = canvas.getActiveObject(); 
+    if(activeObject && activeObject.type == "i-text") {
+      canvas.getActiveObject().set({"fill": color});
+      canvas.renderAll();
+    }
     setState({
       ...state,canvaColor:color
     });
@@ -28,19 +40,7 @@ const TextTab = () => {
     setState({
       ...state,canvaText:event.target.value
     })
-    // const caText = new fabric.Textbox(event.target.value, {
-    //   left: state.width - 230,
-    //   top:20,
-    //   fontFamily: 'sanif',
-    //   fontSize:15,
-    //   fill:'black',
-    //   breakWords:true,
-    //   charSpacing:100
-    // });
-    // canvas.add(caText);
-    // caText.width = 190;
 
-    // canvas.renderAll.bind(canvas);
     setCanvaText(event.target.value);
   }
   return (

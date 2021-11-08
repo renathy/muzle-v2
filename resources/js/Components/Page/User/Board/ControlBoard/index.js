@@ -13,7 +13,7 @@ const Board = () => {
 
   return (
     <div className="select-none p-4">
-      <div className="mb-4">
+      <div className="mb-2">
         <Navigation />
       </div>
       <div className="p-2 space-y-4">

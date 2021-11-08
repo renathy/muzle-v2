@@ -11,7 +11,6 @@ const Index = () => {
     categories: props.categories,
     backgrounds:props.backgrounds
   });
-  console.log(data);
   const [status, setStatus] = React.useState({ code: null });
   const formRef = React.useRef(null);
   const [backgrounds, setBackgrounds] = React.useState([]);

@@ -9,7 +9,7 @@ use App\Models\Game;
 class PublicController extends Controller {
     public function index()
     { 
-        $games = Game::where('is_archivated', 0)->orderBy('name')->get();
+        $games = Game::where('is_archivated', 0)->orderBy('ordering')->get();
         return view('welcome')->with('games', $games);
     }
     public function apraksts(){

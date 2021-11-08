@@ -18,7 +18,9 @@ class GameController extends Controller
      */
     public function index()
     {
-        $games = Game::where('is_archivated', 0)->get();
+        $games = Game::where('is_archivated', 0)
+            ->orderBy('ordering')    
+            ->get();
         return Inertia::render('User/Game/Index', [
             'games' => $games,  
             'active_id'=>-1,
@@ -26,23 +28,15 @@ class GameController extends Controller
     }
 
     public function gameDisplay($id){
-        $games = Game::where('is_archivated', 0)->get();
+        $games = Game::where('is_archivated', 0)
+            ->orderBy('ordering')    
+            ->get();
         return Inertia::render('User/Game/Index', [
             'games' => $games,  
             'active_id'=>$id
         ]);
     }
 
-    // public function frontend_index()
-    // {
-    //     $games = Game::where('is_archivated', 0)->get();
-    //     return Inertia::render('User/Game/Index', [
-    //         'games' => $games,
-    //     ]);
-    // }
-
-
- 
     /**
      * Display the specified resource.
      *

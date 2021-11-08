@@ -4,15 +4,15 @@
 <div class="py-16 px-2">
     <div class="container max-w-screen-xl mx-auto">
         <div class="grid grid-cols-12">
-            <div class="col-start-4 col-span-6 text-center mb-5">
+            <div class="col-start-3 col-span-8 text-center mb-2">
                 <div class="text-4xl text-green-900 font-bold">
                     Lielā dabas spēle Mežs
                 </div>
                 <div class="mt-4 flex justify-center w-full">
-                    <img class="w-1/2" alt="Lielā dabas spēle Mežs" src="img/dabas-spele.jpg">
+                    <img class="w-1/3" alt="Lielā dabas spēle Mežs" src="img/dabas-spele.jpg">
                 </div>
-                <div class="mt-5 text-2xl text-green-700">
-                    Šeit būs īss visu spēļu apraksts
+                <div class="mt-4 text-2xl text-green-700">
+                    Spēle Mežs ir daudzveidīgi lietojams izzinošs materiāls, kas ļaus izprast meža un tā iemītnieku dzīvi, savstarpējo mijiedarbību.
                 </div>
             </div> 
         </div>
@@ -23,7 +23,9 @@
                     <div class="p-3">
                         <div class="font-bold text-xl mb-2 card-header text-center">{{$game->name}}</div>
                         <div class="text-center border border-gray-700 overflow-hidden flex justify-center" style="height:170px;">
-                            <img src="/storage/{{$game->frontend_img_thumb}}" alt="{{$game->name}}" style="height:170px">
+                            <a href="/games/{{$game->id}}">
+                                <img src="/storage/{{$game->frontend_img_thumb}}" alt="{{$game->name}}" style="height:170px">
+                            </a>
                         </div>
                         <!-- <div class="text-center mt-3" style="height:54px;overflow:hidden">{{$game->description}}</div> -->
                         <div class="flex justify-between items-end mt-4">
@@ -33,7 +35,7 @@
                                 </button>
                             </div>
                             <div class="text-right">
-                                <a href="#static" class="hover:text-yellow-900">Uz aprakstu >> </a>
+                                <a href="/apraksts" class="hover:text-yellow-900">Uz aprakstu >> </a>
                             </div>
                         </div>
                     </div>

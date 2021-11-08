@@ -10,7 +10,6 @@ const Index = () => {
 
   const { games } = usePage().props;
   const [data, setData] = React.useState(null);
-  console.log(games,">>>>>>>>>>>>>>>>>>>>>>>>>>>");
   const handleGameSelect = event => {
     axios.get(`/games/${event.target.value}`).then(function (response) {
       const { game, backgrounds, categories } = response.data;
