@@ -36,6 +36,8 @@ class TenantController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:tenants,name',
             'code' => 'required|unique:tenants,code',
+            'date_from'=>'required',
+            'date_to'=>'required'
         ]);
 
         if ($validator->fails()) {
@@ -47,6 +49,8 @@ class TenantController extends Controller
         $tenant = new Tenant;
         $tenant->name = $request->name;
         $tenant->code = $request->code;
+        $tenant->date_from = $request->date_from;
+        $tenant->date_to = $request->date_to;
         $tenant->save();
 
         return response()->json([
@@ -83,6 +87,8 @@ class TenantController extends Controller
         $tenant = Tenant::find($id);
         $tenant->name = $request->name;
         $tenant->code = $request->code;
+        $tenant->date_from = $request->date_from;
+        $tenant->date_to = $request->date_to;
         $tenant->save();
 
         return response()->json([

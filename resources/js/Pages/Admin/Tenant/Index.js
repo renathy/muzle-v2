@@ -5,7 +5,7 @@ import EditDialog from '@/Components/Page/Admin/Tenant/EditDialog';
 import { usePage } from '@inertiajs/inertia-react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton, Button } from '@material-ui/core';
 import { AiFillEdit } from 'react-icons/ai';
-
+import TextField from '@material-ui/core/TextField';
 const Index = () => {
   const { tenants } = usePage().props;
   const [data, setData] = React.useState([]);
@@ -16,6 +16,7 @@ const Index = () => {
   });
 
   React.useEffect(() => {
+    console.log(tenants);
     setData(tenants);
   }, []);
 
@@ -33,7 +34,9 @@ const Index = () => {
               <TableRow>
                 <TableCell>Name</TableCell>
                 <TableCell>Code</TableCell>
-                <TableCell></TableCell>
+                <TableCell>Date From</TableCell>
+                <TableCell>Date To</TableCell>
+                <TableCell>Edit</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -44,6 +47,12 @@ const Index = () => {
                   </TableCell>
                   <TableCell>
                     {tenant.code}
+                  </TableCell>
+                  <TableCell>
+                    {tenant.date_from }
+                  </TableCell>
+                  <TableCell>
+                    {tenant.date_to }
                   </TableCell>
                   <TableCell width={50}>
                     <IconButton onClick={() => setEditForm({ open: true, tenant })}>
