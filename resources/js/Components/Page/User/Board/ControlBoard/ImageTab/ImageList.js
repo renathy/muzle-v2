@@ -54,13 +54,19 @@ const ImageList = () => {
 
     const imageUrl = `/storage/${image.src}`;
       new fabric.Image.fromURL(imageUrl, img => {
+        // todo: better scaling
         var scale = 1;        
-        scale = 100/img.width;        
+        scale = 100 / img.width; 
+
+        if (Number(dropSize) > 0) {
+          scale = scale * image.dropSize;
+        }
+
         var oImg = img.set({
            left:  state.width / 2 - img.width * scale, 
            top:  state.height / 2 - img.height * scale, 
            angle: 0,
-           borderColor: '#cc0000',
+           borderColor: '#cc0000', // todo: border and corner colors should be set to all objects equally
            cornerColor: '#cc0000',
            cornerStyle: 'circle'
           })
