@@ -22,7 +22,6 @@ use Inertia\Inertia;
 //Route::get('/', 'PublicPageController@index');
 Route::get('/', 'User\PublicController@index');
 Route::get('/apraksts', 'User\PublicController@apraksts');
-
 require __DIR__.'/auth.php';
 
 Route::middleware('auth')->group(function() {
@@ -31,8 +30,8 @@ Route::middleware('auth')->group(function() {
         Route::resource('tenants',     Admin\TenantController::class)->except(['create', 'edit', 'show']);
         Route::resource('users',       Admin\UserController::class)->except(['create', 'edit', 'show']);
         Route::resource('categories',  Admin\CategoryController::class)->only(['index', 'store']);
-        Route::resource('images',      Admin\ImageController::class)->only(['index', 'store']);
-        Route::resource('backgrounds', Admin\BackgroundController::class)->only(['index', 'store']);
+        Route::resource('images',      Admin\ImageController::class)->only(['index', 'store','destroy']);
+        Route::resource('backgrounds', Admin\BackgroundController::class)->only(['index', 'store','destroy']);
         Route::resource('games',       Admin\GameController::class)->only(['index', 'store']);
     });
 

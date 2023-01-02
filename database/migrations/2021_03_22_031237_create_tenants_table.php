@@ -17,6 +17,8 @@ class CreateTenantsTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('code')->unique();
+            $table->date('date_from')->default(DB::raw('CURRENT_TIMESTAMP'));;
+            $table->date('date_to')->default(DB::raw('CURRENT_TIMESTAMP'));;
             $table->timestamps();
         });
     }

@@ -108,6 +108,7 @@ class BackgroundController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Background::find($id)->delete();
+        return response()->json(['status'=>"success"]);
     }
 }

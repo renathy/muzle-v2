@@ -1,16 +1,20 @@
 import React from 'react';
 import { Dialog, Button } from '@material-ui/core';
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import FormTextInput from "@/Components/Form/FormTextInput";
 import axios from "axios";
+import TextField from '@material-ui/core/TextField';
+
 import _ from 'underscore';
 
 const EditDialog = ({ tenant, data, setData, onClose, ...props }) => {
 
   const { handleSubmit, control } = useForm();
+  console.log(control);
   const [status, setStatus] = React.useState({ code: null });
 
   const submit = (formData) => {
+    console.log(formData);
     setStatus({ code: null });
     axios.put(`/management/tenants/${tenant.id}`, formData).then(function (response) {
       setData(data.map(d => d.id === tenant.id ? response.data.tenant : d));
@@ -59,7 +63,43 @@ const EditDialog = ({ tenant, data, setData, onClose, ...props }) => {
               </div>
             }
             <FormTextInput control={control} name="name" defaultValue={tenant.name} required />
-            <FormTextInput control={control} name="code" defaultValue={tenant.code} required />
+            <FormTextInput control={control} name="code" defaultValue={tenant.code} />
+            <div className="d-flex justify-content-between">
+              <Controller
+                control={control} 
+                name="date_from"
+                defaultValue={tenant.date_from}
+                required
+                render={({ onChange, value  }) => 
+                  <TextField
+                    label="DATE FROM"
+                    type="date"
+                    value={value}
+                    onChange={onChange}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                }
+               />
+               <Controller
+                control={control} 
+                name="date_to"
+                defaultValue={tenant.date_to}
+                required
+                render={({ onChange, value  }) => 
+                  <TextField
+                    label="DATE TO"
+                    type="date"
+                    value={value}
+                    onChange={onChange}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                }
+               />
+            </div>
             <Button variant="contained" color="default" type="submit" fullWidth>
               Save
 					  </Button>

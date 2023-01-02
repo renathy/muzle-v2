@@ -48,3 +48,37 @@ video {
   -o-object-fit: fill!important;
      object-fit: fill!important;
 }
+.category-image{
+  position: relative;
+}
+.delete-button{
+  position:absolute;
+  top:-6px;
+  right: -6px;
+  display: inline-block;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: white;
+  
+  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.7);
+  cursor: pointer;
+  transition: .5s;
+}
+.delete-button:hover{
+  box-shadow: 0px 0px 3px 0px rgba(167, 23, 23, 0.9);
+  background-color: rgb(214, 240, 224);
+}
+.delete-button button{
+  padding:3px 6px!important;
+
+}
+.delete-button .MuiSvgIcon-fontSizeSmall{
+  font-size: 14px;
+  color:red;
+}
+.d-flex{
+  display: flex;
+}
+.justify-content-between{
+  justify-content: space-between;
+}

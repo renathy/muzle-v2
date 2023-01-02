@@ -1,7 +1,8 @@
 import React from 'react';
 import { Dialog, Button } from '@material-ui/core';
-import { useForm } from "react-hook-form";
+import { useForm , Controller} from "react-hook-form";
 import FormTextInput from "@/Components/Form/FormTextInput";
+import TextField from '@material-ui/core/TextField';
 import axios from "axios";
 import _ from 'underscore';
 
@@ -49,6 +50,42 @@ const CreateDialog = ({ data, setData, ...props }) => {
           }
           <FormTextInput control={control} name="name" required />
           <FormTextInput control={control} name="code" required />
+          <div className="d-flex justify-content-between">
+            <Controller
+              control={control} 
+              name="date_from"
+              defaultValue={""}
+              required
+              render={({ onChange, value  }) => 
+                <TextField
+                  label="DATE FROM"
+                  type="date"
+                  value={value}
+                  onChange={onChange}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              }
+              />
+              <Controller
+                control={control} 
+                name="date_to"
+                defaultValue={""}
+                required
+                render={({ onChange, value  }) => 
+                  <TextField
+                    label="DATE TO"
+                    type="date"
+                    value={value}
+                    onChange={onChange}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+              />
+              }
+              />
+            </div>
           <Button variant="contained" color="default" type="submit" fullWidth>
             Submit
 					</Button>
